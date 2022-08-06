@@ -10,12 +10,26 @@
 
 ```javascript
   player.keys = {
+//In case You want to move up and down
+    up: {
+      key: "",
+      pressed: false
+    },
+    down: {
+      key: "",
+      pressed: false
+    },
+//In case You want to move up and down
     left: {
-      key: "Your Key".
+      key: "Your Key",
       pressed: false
     },
     right: {
       key: "Your Key",
+      pressed: false
+    },
+    shoot: {
+      key: " ",
       pressed: false
     }
   };
