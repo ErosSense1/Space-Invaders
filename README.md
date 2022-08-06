@@ -6,7 +6,7 @@
 | Right Arrow | Move to right  | ( > ) | 
 | Space | Shoots |
 
-# **can edit controls with:**
+# **Can edit controls with:**
 
 ```javascript
   player.keys = {
