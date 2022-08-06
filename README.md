@@ -5,7 +5,7 @@ controls:
   right: ArrowRight
   
 can edit controls with:
-  ``player.keys = {
+  player.keys = {
     left: {
       key: "Your Key".
       pressed: false
@@ -14,5 +14,5 @@ can edit controls with:
       key: "Your Key",
       pressed: false
     }
-  };``
+  };
 // This can be found on class.js-( line:15, column: 9 )//
