@@ -1,5 +1,5 @@
 import { control } from "./controls.mjs";
-import { A, c, enemies, player } from "./script.mjs";
+import { c, enemies, player } from "./script.mjs";
 import { clean, end, objFuncs } from "./utils.mjs";
 
 const x = () => {
