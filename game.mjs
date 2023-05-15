@@ -1,24 +1,33 @@
-import { Control } from "./controls.mjs";
-import { A, CANVAS_HEIGHT, CANVAS_WIDTH, c, enemies, enemiesNum, player } from "./script.mjs";
-import { objFuncs } from "./utils.mjs";
+import { control } from "./controls.mjs";
+import { A, c, enemies, player } from "./script.mjs";
+import { clean, end, objFuncs } from "./utils.mjs";
+
+const x = () => {
+  objFuncs(c, player, "controls");
+  objFuncs(c, player, "update");
+};
+control();
 
 function game() {
-    c.clearRect(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
-
-    objFuncs(c, player, "controls");
-    objFuncs(c, player, "update");
-    enemies.forEach((enemy) => {
-        enemy.draw(c);
-        enemy.life(2);
-    });
-
-    if (player.bulletController.count == enemiesNum*enemiesNum) {
-        enemies = []
-        player.bulletController.count = 0
-        player.bulletController.bullets = []
-        A()
-        
+  clean(c);
+  x();
+  enemies.forEach((enemy) => {
+    objFuncs(c, enemy, "draw");
+    if (enemy.y >= player.position.y - 25) {
+      enemies.forEach((e) => {
+        e.y = -1000;
+      });
+      setTimeout(() => {
+        alert("You lose!");
+        let restart = confirm("Wanna play again?");
+        if (restart) {
+          window.location.reload();
+        } else {
+          window.close();
+        }
+      }, 500);
     }
+  });
+  end();
 }
-Control()
 window.onload = setInterval(game, 1000 / 60);

@@ -16,19 +16,19 @@ class Player {
         };
         this.keys = {
             up: {
-                key: "",
-                pressed: false,
-            },
-            down: {
-                key: "",
-                pressed: false,
-            },
-            left: {
                 key: "ArrowLeft",
                 pressed: false,
             },
-            right: {
+            down: {
                 key: "ArrowRight",
+                pressed: false,
+            },
+            left: {
+                key: "a",
+                pressed: false,
+            },
+            right: {
+                key: "d",
                 pressed: false,
             },
             shoot: {
@@ -72,9 +72,9 @@ class Player {
         }
 
         if (this.keys.up.pressed) {
-            this.speed.y = -2;
+            this.speed.x = -2;
         } else if (this.keys.down.pressed) {
-            this.speed.y = 2;
+            this.speed.x = 2;
         } else {
             this.speed.y = 0;
         }
@@ -110,7 +110,7 @@ class BulletController {
             bullet.draw(c);
             if (bullet.y <= -15) this.bullets.shift();
 
-            enemies.forEach((enemy) => {
+            enemies.forEach((enemy,i) => {
                 if (
                     bullet.y <= enemy.y + (enemy.height - 1) &&
                     bullet.x <= enemy.x + enemy.width &&
@@ -123,11 +123,8 @@ class BulletController {
                     bullet.x <= enemy.x + enemy.width &&
                     bullet.x + bullet.width >= enemy.x
                 ) {
-                    enemy.hp = 0;
-                    if (enemy.hp === 0) {
-                        enemy.x = -100;
+                        enemies.splice(i,1);
                         this.count += 1;
-                    }
                 } else return false;
             });
         });
@@ -137,17 +134,17 @@ class BulletController {
 class Enemy {
     width = 25;
     height = 25;
-    hp = 0;
     constructor(x, y) {
         this.x = x;
         this.y = y;
+        this.ax = x;
+        this.ay = y;
     }
     draw(c) {
         c.fillRect(this.x, this.y, this.width, this.height);
+        this.y+=.4
     }
-    life(n) {
-        this.hp = n;
-    }
+
 }
 
 export {Enemy,Player,BulletController}

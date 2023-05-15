@@ -39,6 +39,8 @@ let enemyY = [
 ];
 
 function A() {
+    player.position.y = CANVAS_HEIGHT - player.size.height;
+    player.position.x = CANVAS_WIDTH / 2 - player.size.width / 2;
     for (let i = 0; i < enemiesNum; i++) {
         for (let j = 0; j < enemiesNum; j++) {
             enemies.push(new Enemy(enemyX[i], enemyY[j]));
@@ -46,10 +48,6 @@ function A() {
     }
 }
 A();
-enemies.forEach((enemy) => {
-    enemy.life(1);
-});
-player.position.y = CANVAS_HEIGHT - player.size.height;
-player.position.x = CANVAS_WIDTH / 2 - player.size.width / 2;
+
 
 export {CANVAS_HEIGHT,CANVAS_WIDTH,enemies,player,enemiesNum,A,c}

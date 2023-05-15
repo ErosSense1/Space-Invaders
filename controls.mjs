@@ -1,6 +1,6 @@
 import { player } from "./script.mjs";
 
-function Control(){
+function control(){
     window.addEventListener("keydown", (e) => {
         switch (e.key) {
             case player.keys.right.key:
@@ -41,4 +41,4 @@ function Control(){
     });
 }
 
-export {Control}
+export {control}
